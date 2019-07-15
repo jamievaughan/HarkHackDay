@@ -1,9 +1,11 @@
 import * as mqtt from 'async-mqtt';
-import * as api from './API';
+import * as api from './Api';
+
+import { default as config } from 'Config';
 
 console.log('Hark Baby!');
 
-const address = '10.0.0.45:8883';
+const address = `${config.GatewayAddress}:8883`;
 const client = mqtt.connect(address);
 
 const handleMessage = async (topic: string, message: string): Promise<void> => {

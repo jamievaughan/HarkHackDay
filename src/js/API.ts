@@ -1,4 +1,6 @@
-const baseUrl = '10.0.0.45:3000/api';
+import { default as config } from './Config';
+
+const baseUrl = `${config.GatewayAddress}:3000/api`;
 
 export const getMetricState = async () => {
   const response = await fetch(`${baseUrl}/metric`);
