@@ -4,6 +4,7 @@
         "target": "es5",
 		"lib": ["es6", "dom"],
 		"baseUrl": "./src/js",
+		"module": "system",
 		"moduleResolution": "node",
         "outFile": "./dist/index.js",
 		"paths": {
