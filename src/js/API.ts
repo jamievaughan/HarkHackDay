@@ -1,4 +1,4 @@
-const baseUrl = '';
+const baseUrl = '10.0.0.45:3000/api';
 
 export const getMetricState = async () => {
   const response = await fetch(`${baseUrl}/metric`);
