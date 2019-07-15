@@ -15,17 +15,23 @@ const handleMessage = async (topic: string, message: string): Promise<void> => {
         case 'metrics/temperature':
             const temp = body.value;
 
+            const redLampState = (await api.getDeviceState('redLamp')).isOn;
+            const blueLampState = (await api.getDeviceState('blueLamp')).isOn;
+
+            const fanState = (await api.getDeviceState('fan')).isOn;
+            const heaterState = (await api.getDeviceState('heater')).isOn;
+
             // Too warm!
-            if (temp >= 25) {
+            if (temp >= 25 && !redLampState && (!fanState || heaterState)) {
                 await api.turnDeviceOn('redLamp');
                 await api.turnDeviceOff('blueLamp');
 
                 await api.turnDeviceOn('fan');
                 await api.turnDeviceOff('heater');
             }
-            
+
             // Too cold!
-            if (temp <= 15) {
+            if (temp <= 15 && !blueLampState && (!heaterState || fanState)) {
                 await api.turnDeviceOn('blueLamp');
                 await api.turnDeviceOff('redLamp');
 

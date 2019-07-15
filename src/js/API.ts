@@ -1,4 +1,4 @@
-import * as request from 'request';
+import * as request from 'request-promise';
 
 import { default as config } from './Config';
 
@@ -7,17 +7,23 @@ const baseUrl = `http://${config.GatewayAddress}:3000/api`;
 export const getMetricState = async () => {
   const response = await request.get(`${baseUrl}/metric`);
 
-  return JSON.parse(response.body.toString());
+  return response;
 }
 
-export const getDeviceState = async () => {
+export const getDeviceStates = async () => {
   const response = await request.get(`${baseUrl}/devices/state`);
 
-  return JSON.parse(response.body.toString());
+  return response;
+}
+
+export const getDeviceState = async (device: string) => {
+  const response = await request.get(`${baseUrl}/devices/${device}/state`);
+
+  return response;
 }
 
 export const turnDeviceOff = async (device: string) => {
-  const body = {isOn: false}
+  const body = { turnOn: false };
 
   const response = await request.post(`${baseUrl}/devices/${device}/state`, {
     method: "POST",
@@ -27,11 +33,11 @@ export const turnDeviceOff = async (device: string) => {
     }
   });
 
-  return JSON.parse(response.body.toString());
+  return response;
 }
 
 export const turnDeviceOn = async (device: string) => {
-  const body = {isOn: true}
+  const body = { turnOn: true };
 
   const response = await request.post(`${baseUrl}/devices/${device}/state`, {
     method: "POST",
@@ -41,5 +47,5 @@ export const turnDeviceOn = async (device: string) => {
     }
   });
 
-  return JSON.parse(response.body.toString());
+  return response;
 }
