@@ -19,10 +19,12 @@
   "dependencies": {
     "async-mqtt": "^2.3.0",
     "mqtt": "^3.0.0",
+    "request": "^2.88.0",
     "ts-node": "^8.3.0",
     "typescript": "^3.5.3"
   },
   "devDependencies": {
-    "@types/mqtt": "^2.5.0"
+    "@types/mqtt": "^2.5.0",
+    "@types/request": "^2.48.2"
   }
 }

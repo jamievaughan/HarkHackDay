@@ -1,23 +1,25 @@
+import * as request from 'request';
+
 import { default as config } from './Config';
 
-const baseUrl = `${config.GatewayAddress}:3000/api`;
+const baseUrl = `http://${config.GatewayAddress}:3000/api`;
 
 export const getMetricState = async () => {
-  const response = await fetch(`${baseUrl}/metric`);
+  const response = await request.get(`${baseUrl}/metric`);
 
-  return response.json();
+  return JSON.parse(response.body.toString());
 }
 
 export const getDeviceState = async () => {
-  const response = await fetch(`${baseUrl}/devices/state`);
+  const response = await request.get(`${baseUrl}/devices/state`);
 
-  return response.json();
+  return JSON.parse(response.body.toString());
 }
 
 export const turnDeviceOff = async (device: string) => {
   const body = {isOn: false}
 
-  const response = await fetch(`${baseUrl}/devices/${device}/state`, {
+  const response = await request.post(`${baseUrl}/devices/${device}/state`, {
     method: "POST",
     body: JSON.stringify(body),
     headers: {
@@ -25,13 +27,13 @@ export const turnDeviceOff = async (device: string) => {
     }
   });
 
-  return response.json();
+  return JSON.parse(response.body.toString());
 }
 
 export const turnDeviceOn = async (device: string) => {
   const body = {isOn: true}
 
-  const response = await fetch(`${baseUrl}/devices/${device}/state`, {
+  const response = await request.post(`${baseUrl}/devices/${device}/state`, {
     method: "POST",
     body: JSON.stringify(body),
     headers: {
@@ -39,5 +41,5 @@ export const turnDeviceOn = async (device: string) => {
     }
   });
 
-  return response.json();
+  return JSON.parse(response.body.toString());
 }
