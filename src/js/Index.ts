@@ -5,8 +5,8 @@ import { default as config } from 'Config';
 
 console.log('Hark Baby!');
 
-const address = `${config.GatewayAddress}:8883`;
-const client = mqtt.connect(address);
+const mqttAddress = `${config.GatewayAddress}:8883`;
+const client = mqtt.connect(mqttAddress);
 
 const handleMessage = async (topic: string, message: string): Promise<void> => {
     const body = JSON.parse(message.toString());
@@ -35,6 +35,8 @@ const handleMessage = async (topic: string, message: string): Promise<void> => {
 };
 
 const main = async (): Promise<void> => {
+    console.log(`Connected to MQTT broker: ${mqttAddress}`);
+
     client.on('message', async (topic: string, message: string) => {
         console.log(`topic=${topic} message=${message}`);
 
