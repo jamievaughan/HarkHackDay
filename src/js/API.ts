@@ -3,13 +3,13 @@ const baseUrl = '';
 export const getMetricState = async () => {
   const response = await fetch(`${baseUrl}/metric`);
 
-  return response;
+  return response.json();
 }
 
 export const getDeviceState = async () => {
   const response = await fetch(`${baseUrl}/devices/state`);
 
-  return response;
+  return response.json();
 }
 
 export const turnDeviceOff = async (device: string) => {
@@ -23,7 +23,7 @@ export const turnDeviceOff = async (device: string) => {
     }
   });
 
-  return response;
+  return response.json();
 }
 
 export const turnDeviceOn = async (device: string) => {
@@ -37,5 +37,5 @@ export const turnDeviceOn = async (device: string) => {
     }
   });
 
-  return response;
+  return response.json();
 }
