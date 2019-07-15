@@ -1,0 +1,23 @@
+{
+  "name": "harkhackday",
+  "version": "1.0.0",
+  "description": "Hackz0r",
+  "main": "index.js",
+  "scripts": {
+    "start": "ts-node ./src/js/Index.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jamievaughan/HarkHackDay.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jamievaughan/HarkHackDay/issues"
+  },
+  "homepage": "https://github.com/jamievaughan/HarkHackDay#readme",
+  "dependencies": {
+    "ts-node": "^8.3.0",
+    "typescript": "^3.5.3"
+  }
+}
