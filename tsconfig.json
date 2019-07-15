@@ -1,11 +1,11 @@
 {
     "strict": true,
 	"compilerOptions": {
-        "target": "es5",
+		"target": "es5",
+		"module": "commonjs",
 		"lib": ["es6", "dom"],
 		"baseUrl": "./src/js",
 		"moduleResolution": "node",
-        "outFile": "./dist/index.js",
 		"paths": {
 			"@/*": ["src/js/*"]
 		}

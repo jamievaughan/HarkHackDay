@@ -17,7 +17,11 @@
   },
   "homepage": "https://github.com/jamievaughan/HarkHackDay#readme",
   "dependencies": {
+    "mqtt": "^3.0.0",
     "ts-node": "^8.3.0",
     "typescript": "^3.5.3"
+  },
+  "devDependencies": {
+    "@types/mqtt": "^2.5.0"
   }
 }
